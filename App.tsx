@@ -59,6 +59,7 @@ const DrawerNav = () => {
       drawerContent={props => <DrawerContent {...props} />}
       drawerStyle={{width: '100%'}} 
       screenOptions={{
+        // @ts-ignore
         drawerWidth: 100,
       }}>
       <Drawer.Screen name="Home" component={StackNav} />
