@@ -21,11 +21,6 @@ const DrawerNavigator = () => {
           fontWeight: 'bold',
         },
       }}>
-      <Drawer.Screen
-        name="Home"
-        component={StackNav}
-        options={{gestureEnabled: false}}
-      />
     </Drawer.Navigator>
   );
 };

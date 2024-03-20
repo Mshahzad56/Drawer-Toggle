@@ -19,25 +19,17 @@ const StackNav = () => {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown:false,
         statusBarColor: '#0163d2',
         headerStyle: {
           backgroundColor: '#0163d2',
         },
         headerTintColor: '#fff',
-        headerTitleAlign: 'center',
       }}>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          headerLeft: () => {
-            return (
-              <TouchableOpacity
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-                <Text style={{color: '#fff'}}>Open Drawer</Text>
-              </TouchableOpacity>
-            );
-          },
         }}
       />
       <Stack.Screen name="Profile" component={ProfileScreen} />
@@ -45,7 +37,7 @@ const StackNav = () => {
         name="User"
         component={UserScreen}
         options={{
-          headerShown: true,
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
@@ -62,7 +54,7 @@ const DrawerNav = () => {
         // @ts-ignore
         drawerWidth: 100,
       }}>
-      <Drawer.Screen name="Home" component={StackNav} />
+      <Drawer.Screen name="Homse" component={StackNav} />
     </Drawer.Navigator>
   );
 };

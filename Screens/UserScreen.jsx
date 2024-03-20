@@ -4,7 +4,7 @@ function UserScreen() {
   return (
     <View style={styles.viewStyle}>
       
-      <Text style={styles.textStyle}>This is User for</Text>
+      <Text style={styles.textStyle}>helo</Text>
     </View>
   );
 }
