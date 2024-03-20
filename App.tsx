@@ -34,7 +34,6 @@ const StackNav = () => {
             return (
               <TouchableOpacity
                 onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-                {/* Add your custom drawer toggle button here */}
                 <Text style={{color: '#fff'}}>Open Drawer</Text>
               </TouchableOpacity>
             );
@@ -58,9 +57,9 @@ const DrawerNav = () => {
   return (
     <Drawer.Navigator
       drawerContent={props => <DrawerContent {...props} />}
-      drawerStyle={{width: '100%'}} // Set the width of the drawer here
+      drawerStyle={{width: '100%'}} 
       screenOptions={{
-        drawerWidth: 100, // Set the width of the drawer content here
+        drawerWidth: 100,
       }}>
       <Drawer.Screen name="Home" component={StackNav} />
     </Drawer.Navigator>
