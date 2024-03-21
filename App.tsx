@@ -1,44 +1,30 @@
 import 'react-native-gesture-handler';
-import {
-  NavigationContainer,
-  useNavigation,
-  DrawerActions,
-} from '@react-navigation/native';
+import React from 'react';
+import { NavigationContainer, useNavigation, DrawerActions } from '@react-navigation/native';
 import HomeScreen from './Screens/HomeScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 import UserScreen from './Screens/UserScreen';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerContent from './DrawerContent';
-import React, {useEffect} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
-
+import { TouchableOpacity, Text, View } from 'react-native';
+import Entypo from "react-native-vector-icons/Entypo"
 const StackNav = () => {
   const Stack = createNativeStackNavigator();
   const navigation = useNavigation();
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown:false,
-        statusBarColor: '#0163d2',
-        headerStyle: {
-          backgroundColor: '#0163d2',
-        },
-        headerTintColor: '#fff',
+        headerShown: false,
       }}>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{
-        }}
       />
       <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen
         name="User"
         component={UserScreen}
-        options={{
-          headerShown: false,
-        }}
       />
     </Stack.Navigator>
   );
@@ -46,15 +32,26 @@ const StackNav = () => {
 
 const DrawerNav = () => {
   const Drawer = createDrawerNavigator();
+  const navigation = useNavigation();
+
   return (
     <Drawer.Navigator
       drawerContent={props => <DrawerContent {...props} />}
-      drawerStyle={{width: '100%'}} 
-      screenOptions={{
-        // @ts-ignore
-        drawerWidth: 100,
-      }}>
-      <Drawer.Screen name="Homse" component={StackNav} />
+      // @ts-ignore
+      drawerStyle={{ width: '100%' }}
+    >
+      <Drawer.Screen
+        name="Home"
+        component={StackNav}
+        options={{
+          drawerIcon: ({ color, size }) => (
+            <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Entypo name="menu-outline" size={size} color={color} />
+            </TouchableOpacity>
+          ),
+          drawerLabel: () => null,
+        }}
+      />
     </Drawer.Navigator>
   );
 };
